@@ -62,5 +62,34 @@ const adminOnly = (req, res, next) => {
   }
   next();
 };
+// gate: block user from discovery if not ready
+const requireDiscoveryReady = (req, res, next) => {
+  const user = req.user;
 
+  if (user.photos.length === 0) {
+    return res.status(403).json({
+      success: false,
+      message: 'Upload at least one photo to access discovery.'
+    });
+  }
+
+  if (!user.kyc_url) {
+    return res.status(403).json({
+      success: false,
+      message: 'Upload your KYC document to access discovery.'
+    });
+  }
+
+  if (user.status !== 'APPROVED') {
+    return res.status(403).json({
+      success: false,
+      message: `Your account is ${user.status}. Wait for admin approval.`
+    });
+  }
+
+  next();
+};
+
+// update module.exports at bottom of the file
+module.exports = { protect, adminOnly, requireDiscoveryReady };
 module.exports = { protect, adminOnly };
