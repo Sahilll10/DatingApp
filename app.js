@@ -11,6 +11,10 @@ const connectDB = require('./src/config/db');
 const authRoutes = require('./src/modules/auth/auth.routes');
 
 const app = express();
+// import routes
+const authRoutes = require('./src/modules/auth/auth.routes');
+const usersRoutes = require('./src/modules/users/users.routes');  // ADD THIS
+
 
 // connect database
 connectDB();
@@ -22,7 +26,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // routes
+// routes
 app.use('/api/auth', authRoutes);
+app.use('/api/users', usersRoutes);   // ADD THIS
 
 // health check
 app.get('/', (req, res) => {
