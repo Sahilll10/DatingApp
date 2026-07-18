@@ -80,9 +80,15 @@ const userSchema = new mongoose.Schema({
     default: null
   },
   is_blocked: {
-    type: Boolean,
-    default: false
-  },
+  type: Boolean,
+  default: false
+},
+
+// ADD THIS
+  isAdmin: {
+  type: Boolean,
+  default: false
+},
   last_login_at: {
     type: Date,
     default: null

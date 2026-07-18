@@ -17,6 +17,7 @@ const usersRoutes = require("./src/modules/users/users.routes");
 const app = express();
 // import routes
 const mediaRoutes  = require('./src/modules/media/media.routes');  // ADD
+const adminRoutes = require('./src/modules/admin/admin.routes');  // ADD
 
 
 
@@ -33,7 +34,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
 // routes
-app.use('/api/media', mediaRoutes);   // ADD
+app.use('/api/media', mediaRoutes); 
+app.use('/api/admin', adminRoutes);  // ADD
 // Health check
 app.get("/", (req, res) => {
   res.json({ message: "🚀 Dating App API is running" });
