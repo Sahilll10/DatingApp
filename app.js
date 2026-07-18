@@ -19,7 +19,7 @@ const app = express();
 const mediaRoutes  = require('./src/modules/media/media.routes');  // ADD
 const adminRoutes = require('./src/modules/admin/admin.routes');  // ADD
 
-
+const discoveryRoutes = require('./src/modules/discovery/discovery.routes'); // ADD
 
 // Connect database
 connectDB();
@@ -29,7 +29,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use('/api/discovery', discoveryRoutes);
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
