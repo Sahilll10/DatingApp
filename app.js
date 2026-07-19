@@ -19,7 +19,9 @@ const app = express();
 const mediaRoutes  = require('./src/modules/media/media.routes');  // ADD
 const adminRoutes = require('./src/modules/admin/admin.routes');  // ADD
 
-const discoveryRoutes = require('./src/modules/discovery/discovery.routes'); // ADD
+const discoveryRoutes = require('./src/modules/discovery/discovery.routes'); 
+const chatRoutes      = require('./src/modules/chat/chat.routes');  // ADD
+
 
 // Connect database
 connectDB();
@@ -35,7 +37,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
 // routes
 app.use('/api/media', mediaRoutes); 
-app.use('/api/admin', adminRoutes);  // ADD
+app.use('/api/admin', adminRoutes);
+app.use('/api/chat',  chatRoutes);  
+
 // Health check
 app.get("/", (req, res) => {
   res.json({ message: "🚀 Dating App API is running" });
