@@ -92,4 +92,3 @@ const requireDiscoveryReady = (req, res, next) => {
 
 // update module.exports at bottom of the file
 module.exports = { protect, adminOnly, requireDiscoveryReady };
-module.exports = { protect, adminOnly };
